@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación – La Realeza Publishing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-switcher button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            background: #FFD700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #1a1a1a;
+            transition: background 0.3s;
+        }
+
+        .language-switcher button.active {
+            background: #FFC700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .language-switcher button:not(.active) {
+            opacity: 0.6;
+        }
+
+        .language-switcher button:hover {
+            opacity: 1;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            padding: 50px 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group.hidden {
+            display: none;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input[type="radio"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: #FFD700;
+        }
+
+        .radio-option label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFC700 100%);
+            color: #1a1a1a;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        .required {
+            color: #FFD700;
+        }
+
+        .hidden-text {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .logo {
+                width: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="es">Español</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <img src="https://i.postimg.cc/L5DxWKjK/larealeza.png" alt="La Realeza Publishing Logo" class="logo">
+
+            <h1>
+                <span class="lang-text" data-lang="es">Aplicación – La Realeza Publishing</span>
+                <span class="lang-text hidden-text" data-lang="en">Application – La Realeza Publishing</span>
+            </h1>
+            <p class="description">
+                <span class="lang-text" data-lang="es">
+                    Somos una publisher enfocada en el desarrollo y la monetización de composiciones.
+                    <br><br>
+                    Este proceso toma menos de 1 minuto. Si tu perfil encaja, te contactaremos para una segunda fase.
+                </span>
+                <span class="lang-text hidden-text" data-lang="en">
+                    We are a publisher focused on the development and monetization of compositions.
+                    <br><br>
+                    This process takes less than 1 minute. If your profile fits, we will contact you for a second phase.
+                </span>
+            </p>
+        </div>
+
+        <form action="https://formspree.io/f/mkokqnej" method="POST">
+            <div class="form-group">
+                <label for="nombre">
+                    <span class="lang-text" data-lang="es">Nombre artístico</span>
+                    <span class="lang-text hidden-text" data-lang="en">Artist Name</span>
+                    <span class="required">*</span>
+                </label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    <span class="lang-text" data-lang="es">Email de contacto</span>
+                    <span class="lang-text hidden-text" data-lang="en">Contact Email</span>
+                    <span class="required">*</span>
+                </label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pais">
+                    <span class="lang-text" data-lang="es">País</span>
+                    <span class="lang-text hidden-text" data-lang="en">Country</span>
+                    <span class="required">*</span>
+                </label>
+                <input type="text" id="pais" name="pais" required>
+            </div>
+
+            <div class="form-group">
+                <label for="instagram">
+                    <span class="lang-text" data-lang="es">Instagram o perfil principal</span>
+                    <span class="lang-text hidden-text" data-lang="en">Instagram or Main Profile</span>
+                    <span class="required">*</span>
+                </label>
+                <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/..." required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span class="lang-text" data-lang="es">¿Cómo te defines?</span>
+                    <span class="lang-text hidden-text" data-lang="en">How do you define yourself?</span>
+                    <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="compositor" name="definicion" value="Compositor" required onchange="toggleMusicField()">
+                        <label for="compositor">
+                            <span class="lang-text" data-lang="es">Compositor</span>
+                            <span class="lang-text hidden-text" data-lang="en">Composer</span>
+                        </label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="artista" name="definicion" value="Artista" required onchange="toggleMusicField()">
+                        <label for="artista">
+                            <span class="lang-text" data-lang="es">Artista</span>
+                            <span class="lang-text hidden-text" data-lang="en">Artist</span>
+                        </label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="ambos" name="definicion" value="Ambos" required onchange="toggleMusicField()">
+                        <label for="ambos">
+                            <span class="lang-text" data-lang="es">Ambos</span>
+                            <span class="lang-text hidden-text" data-lang="en">Both</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group hidden" id="composerMusicField">
+                <label for="cancion-composer">
+                    <span class="lang-text" data-lang="es">Comparte 1 canción donde hayas participado como compositor</span>
+                    <span class="lang-text hidden-text" data-lang="en">Share 1 song where you participated as a composer</span>
+                    <span class="required">*</span>
+                </label>
+                <input type="url" id="cancion-composer" name="cancion_compositor" placeholder="https://...">
+            </div>
+
+            <div class="form-group hidden" id="artistMusicField">
+                <label for="cancion-artist">
+                    <span class="lang-text" data-lang="es">Comparte 1 de tus canciones</span>
+                    <span class="lang-text hidden-text" data-lang="en">Share 1 of your songs</span>
+                    <span class="required">*</span>
+                </label>
+                <input type="url" id="cancion-artist" name="cancion_artista" placeholder="https://...">
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span class="lang-text" data-lang="es">¿Estás afiliado a una PRO (ASCAP, BMI, etc.)?</span>
+                    <span class="lang-text hidden-text" data-lang="en">Are you affiliated with a PRO (ASCAP, BMI, etc.)?</span>
+                    <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="pro_si" name="pro" value="Sí / Yes" required>
+                        <label for="pro_si">
+                            <span class="lang-text" data-lang="es">Sí</span>
+                            <span class="lang-text hidden-text" data-lang="en">Yes</span>
+                        </label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="pro_no" name="pro" value="No" required>
+                        <label for="pro_no">
+                            <span class="lang-text" data-lang="es">No</span>
+                            <span class="lang-text hidden-text" data-lang="en">No</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span class="lang-text" data-lang="es">¿Tienes derechos sobre tus composiciones?</span>
+                    <span class="lang-text hidden-text" data-lang="en">Do you have rights over your compositions?</span>
+                    <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="derechos_total" name="derechos" value="Sí, soy dueño total / Yes, I am total owner" required>
+                        <label for="derechos_total">
+                            <span class="lang-text" data-lang="es">Sí, soy dueño total</span>
+                            <span class="lang-text hidden-text" data-lang="en">Yes, I am total owner</span>
+                        </label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="derechos_parcial" name="derechos" value="Parcial (splits) / Partial (splits)" required>
+                        <label for="derechos_parcial">
+                            <span class="lang-text" data-lang="es">Parcial (splits)</span>
+                            <span class="lang-text hidden-text" data-lang="en">Partial (splits)</span>
+                        </label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="derechos_inseguro" name="derechos" value="No estoy seguro / I'm not sure" required>
+                        <label for="derechos_inseguro">
+                            <span class="lang-text" data-lang="es">No estoy seguro</span>
+                            <span class="lang-text hidden-text" data-lang="en">I'm not sure</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <span class="lang-text" data-lang="es">¿Estás interesado en firmar un acuerdo editorial?</span>
+                    <span class="lang-text hidden-text" data-lang="en">Are you interested in signing a publishing agreement?</span>
+                    <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="acuerdo_si" name="acuerdo" value="Sí / Yes" required>
+                        <label for="acuerdo_si">
+                            <span class="lang-text" data-lang="es">Sí</span>
+                            <span class="lang-text hidden-text" data-lang="en">Yes</span>
+                        </label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="acuerdo_no" name="acuerdo" value="No" required>
+                        <label for="acuerdo_no">
+                            <span class="lang-text" data-lang="es">No</span>
+                            <span class="lang-text hidden-text" data-lang="en">No</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span class="lang-text" data-lang="es">Enviar Aplicación</span>
+                <span class="lang-text hidden-text" data-lang="en">Submit Application</span>
+            </button>
+        </form>
+
+        <p class="footer-note">By King West 'El Verdadero Jefe</p>
+    </div>
+
+    <script>
+        let currentLang = 'es';
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLang = this.getAttribute('data-lang');
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.lang-text').forEach(text => {
+                    if (text.getAttribute('data-lang') === currentLang) {
+                        text.classList.remove('hidden-text');
+                    } else {
+                        text.classList.add('hidden-text');
+                    }
+                });
+            });
+        });
+
+        function toggleMusicField() {
+            const selected = document.querySelector('input[name="definicion"]:checked').value;
+            const composerField = document.getElementById('composerMusicField');
+            const artistField = document.getElementById('artistMusicField');
+            const composerInput = document.getElementById('cancion-composer');
+            const artistInput = document.getElementById('cancion-artist');
+
+            // Resetear visibilidad y requerimientos
+            composerField.classList.add('hidden');
+            artistField.classList.add('hidden');
+            composerInput.required = false;
+            artistInput.required = false;
+
+            if (selected === 'Compositor') {
+                composerField.classList.remove('hidden');
+                composerInput.required = true;
+            } else if (selected === 'Artista') {
+                artistField.classList.remove('hidden');
+                artistInput.required = true;
+            } else if (selected === 'Ambos') {
+                // Mostrar AMBOS campos si selecciona "Ambos"
+                composerField.classList.remove('hidden');
+                artistField.classList.remove('hidden');
+                composerInput.required = true;
+                artistInput.required = true;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('[data-lang="es"]').classList.add('active');
+        });
+    </script>
+</body>
+</html>
